@@ -1,0 +1,49 @@
+form:
+  tabs:
+    - name: main
+      label: Main
+      fields:
+        - name: url
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          label: URL
+          required: true
+        - name: cssQuery
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          label: Css Query
+          required: true
+        - name: htmlCheck
+          class: info.magnolia.ui.form.field.definition.CheckboxFieldDefinition
+          label: Html
+          buttonLabel: Yes
+          description: If the 'Html' option is active, html code will have priority to the list of attributes
+        - name: attr
+          class: info.magnolia.ui.form.field.definition.SelectFieldDefinition
+          label: Attribute list
+          options:
+            - name: text
+              value: text
+              selected: true
+              label: text
+            - name: src
+              value: src
+              label: src
+            - name: href
+              value: href
+              label: href
+    - name: style
+      label: Style
+      fields:
+        - name: cssClass
+          class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+          label: Css Class
+        - name: cssCode
+          class: info.magnolia.ui.form.field.definition.CodeFieldDefinition
+          label: Css Code
+          rows: 6
+actions:
+  commit:
+    class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+    label: Save
+  cancel:
+    class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition
+    label: Cancel

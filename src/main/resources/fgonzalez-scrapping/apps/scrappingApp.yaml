@@ -1,0 +1,413 @@
+name: scrapping
+appClass: info.magnolia.ui.contentapp.ContentApp
+class: info.magnolia.ui.contentapp.ConfiguredContentAppDescriptor
+label: Scrapping
+icon: icon-web-resources-app
+subApps:
+  browser:
+    label: Scrapping
+    subAppClass: info.magnolia.ui.contentapp.browser.BrowserSubApp
+    class: info.magnolia.ui.contentapp.browser.BrowserSubAppDescriptor
+    actions:
+      addItem:
+        appName: scrapping
+        label: Add Scrapping Item
+        subAppId: detail
+        icon: icon-add-item
+        nodeType: mgnl:content
+        class: info.magnolia.ui.contentapp.detail.action.CreateItemActionDefinition
+        availability:
+          root: true
+          nodeTypes:
+            folder: mgnl:folder
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      editItem:
+        appName: scrapping
+        subAppId: detail
+        label: Edit Scrapping Item
+        icon: icon-edit
+        class: info.magnolia.ui.contentapp.detail.action.EditItemActionDefinition
+        availability:
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+          nodeTypes:
+            mgnl-content: mgnl:content
+      delete:
+        command: markAsDeleted
+        label: Delete Scrapping Item
+        class: info.magnolia.ui.framework.action.MarkNodeAsDeletedActionDefinition
+      addFolder:
+        icon: icon-add-folder
+        class: info.magnolia.ui.framework.action.AddFolderActionDefinition
+        availability:
+          root: true
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      editFolder:
+        dialogName: ui-framework:folder
+        icon: icon-edit
+        class: info.magnolia.ui.framework.action.OpenEditDialogActionDefinition
+        availability:
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      activate:
+        command: activate
+        catalog: versioned
+        icon: icon-publish
+        class: info.magnolia.ui.framework.action.ActivationActionDefinition
+        availability:
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      activateRecursive:
+        command: activate
+        catalog: versioned
+        icon: icon-publish-incl-sub
+        class: info.magnolia.ui.framework.action.ActivationActionDefinition
+        recursive: true
+        availability:
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      deactivate:
+        command: deactivate
+        catalog: versioned
+        icon: icon-unpublish
+        class: info.magnolia.ui.framework.action.DeactivationActionDefinition
+        availability:
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      export:
+        command: export
+        icon: icon-export
+        class: info.magnolia.ui.framework.action.ExportActionDefinition
+        availability:
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      import:
+        name: import
+        dialogName: ui-admincentral:import
+        icon: icon-import
+        class: info.magnolia.ui.framework.action.OpenCreateDialogActionDefinition
+        availability:
+          root: true
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      restorePreviousVersion:
+        icon: icon-undo
+        class: info.magnolia.ui.contentapp.detail.action.RestorePreviousVersionActionDefinition
+        availability:
+          rules:
+            - name: IsDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsDeletedRule
+      activateDeleted:
+        command: activate
+        catalog: versioned
+        icon: icon-publish
+        class: info.magnolia.ui.framework.action.ActivationActionDefinition
+        availability:
+          rules:
+            - name: IsDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsDeletedRule
+      confirmDeleteItem:
+        successActionName: delete
+        icon: icon-delete
+        label: Delete Scrapping Item
+        confirmationHeader: Confirm Deletion
+        confirmationMessage: Do you want confirm deletion of this item?
+        cancelLabel: Cancel
+        proceedLabel: Confirm
+        class: info.magnolia.ui.framework.action.ConfirmationActionDefinition
+        availability:
+          multiple: true
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      confirmDeleteFolder:
+        icon: icon-delete
+        successActionName: delete
+        class: info.magnolia.ui.framework.action.ConfirmationActionDefinition
+        availability:
+          multiple: true
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      confirmDeleteItems:
+        icon: icon-delete
+        label: Delete Scrapping Item
+        successActionName: delete
+        class: info.magnolia.ui.framework.action.ConfirmationActionDefinition
+        availability:
+          multiple: true
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      showVersions:
+        icon: icon-show-versions
+        class: info.magnolia.ui.contentapp.browser.action.ShowVersionsActionDefinition
+        availability:
+          rules:
+            - name: HasVersionsRule
+              implementationClass: info.magnolia.ui.framework.availability.HasVersionsRule
+      restoreVersion:
+        icon: icon-retrieve-versions
+        class: info.magnolia.ui.contentapp.browser.action.RestoreVersionActionDefinition
+        availability:
+          rules:
+            - name: HasVersionsRule
+              implementationClass: info.magnolia.ui.framework.availability.HasVersionsRule
+      move:
+        icon: icon-move
+        class: info.magnolia.ui.contentapp.movedialog.action.OpenMoveDialogActionDefinition
+        availability:
+          multiple: true
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+      duplicate:
+        icon: icon-duplicate
+        class: info.magnolia.ui.framework.action.DuplicateNodeActionDefinition
+        availability:
+          writePermissionRequired: true
+          rules:
+            - name: IsNotDeletedRule
+              implementationClass: info.magnolia.ui.framework.availability.IsNotDeletedRule
+    actionbar:
+      defaultAction: editItem
+      sections:
+        - name: root
+          groups: 
+            - name: addActions
+              items:
+                - name: addItem
+                - name: addFolder
+            - name: importExportActions
+              items:
+                - name: import
+          availability:
+            root: true
+            nodes: false
+        - name: deletedItem
+          groups:
+            - name: addActions
+              items:
+                - name: addItem
+                - name: confirmDeleteItem
+            - name: editActions
+              items:
+                - name: editItem
+            - name: activationActions
+              items:
+                - name: activateDeleted
+                - name: deactivate
+            - name: importExportActions
+              items:
+                - name: export
+            - name: deletedActions
+              items:
+                - name: restorePreviousVersion
+          availability:
+            nodeTypes:
+              mgnl-content: mgnl:content
+            rules:
+              - name: IsDeletedRule
+                implementationClass: info.magnolia.ui.framework.availability.IsDeletedRule
+        - name: deletedFolder
+          groups:
+            - name: addActions
+              items:
+                - name: addItem
+                - name: addFolder
+                - name: confirmDeleteFolder
+            - name: editActions
+              items:
+                - name: editFolder
+            - name: activationActions
+              items:
+                - name: activateDeleted
+                - name: deactivate
+            - name: importExportActions
+              items:
+                - name: export
+                - name: import
+            - name: deletedActions
+              items:
+                - name: restorePreviousVersion
+          availability:
+            nodeTypes:
+              mgnl-folder: mgnl:folder
+            rules:
+              - name: IsDeletedRule
+                implementationClass: info.magnolia.ui.framework.availability.IsDeletedRule
+        - name: item
+          groups:
+            - name: addActions
+              items:
+                - name: addItem
+                - name: confirmDeleteItem
+            - name: editActions
+              items:
+                - name: editItem
+                - name: move
+                - name: duplicate
+            - name: activationActions
+              items:
+                - name: activate
+                - name: deactivate
+            - name: importExportActions
+              items:
+                - name: export
+            - name: versionsActions
+              items:
+                - name: showVersions
+                - name: restoreVersion
+          availability:
+            nodeTypes:
+              mgnl-content: mgnl:content
+        - name: folder
+          groups:
+            - name: addActions
+              items:
+                - name: addItem
+                - name: addFolder
+                - name: confirmDeleteFolder
+            - name: editActions
+              items:
+                - name: editFolder
+                - name: move
+                - name: duplicate
+            - name: activationActions
+              items:
+                - name: activate
+                - name: activateRecursive
+                - name: deactivate
+            - name: importExportActions
+              items:
+                - name: export
+                - name: import
+          availability:
+            nodeTypes:
+              mgnl-folder: mgnl:folder
+        - name: multiple
+          groups:
+            - name: deleteActions
+              items:
+                - name: confirmDeleteItems
+            - name: activationActions
+              items:
+                - name: activate
+                - name: deactivate
+            - name: importExportActions
+              items:
+                - name: export
+    workbench:
+      dropConstraintClass: info.magnolia.ui.workbench.tree.drop.AlwaysTrueDropConstraint
+      editable: false
+
+      contentViews:
+        - name: tree
+          class: info.magnolia.ui.workbench.tree.TreePresenterDefinition
+          columns: &myColumns
+            - name: name              
+              sortable: true
+              propertyName: jcrName
+              label: Name
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+            - name: url              
+              sortable: true
+              propertyName: url
+              label: URL
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+            - name: status
+              width: 45
+              displayInChooseDialog: false
+              formatterClass: info.magnolia.ui.workbench.column.StatusColumnFormatter
+              class: info.magnolia.ui.workbench.column.definition.StatusColumnDefinition
+            - name: moddate
+              width: 160
+              sortable: true
+              displayInChooseDialog: false
+              formatterClass: info.magnolia.ui.workbench.column.DateColumnFormatter
+              propertyName: mgnl:lastModified
+              class: info.magnolia.ui.workbench.column.definition.MetaDataColumnDefinition
+        - name: list
+          class: info.magnolia.ui.workbench.list.ListPresenterDefinition
+          columns: *myColumns
+        - name: thumbnail
+          class: info.magnolia.ui.workbench.thumbnail.ThumbnailPresenterDefinition
+        - name: search
+          class: info.magnolia.ui.workbench.search.SearchPresenterDefinition
+          columns: *myColumns
+
+    imageProvider:
+       class: info.magnolia.dam.app.ui.imageprovider.DamLinkImageProviderDefinition
+       damLinkPropertyName: image
+    contentConnector:
+      includeProperties: false
+      workspace: scrapping
+      rootPath: /
+      defaultOrder: jcrName
+      nodeTypes:
+        - name: mgnl:scrapping
+          icon: icon-items
+        - name: mgnl:folder
+          icon: icon-folder
+  detail:
+    subAppClass: info.magnolia.ui.contentapp.detail.DetailSubApp
+    class: info.magnolia.ui.contentapp.detail.DetailSubAppDescriptor
+    actions:
+      commit:
+        implementationClass: info.magnolia.ui.form.action.SaveFormAction
+        class: info.magnolia.ui.form.action.SaveFormActionDefinition
+      cancel:
+        class: info.magnolia.ui.form.action.CancelFormActionDefinition
+    editor:
+      actions:
+        - name: commit
+        - name: cancel
+      form:
+        tabs:
+          - name: scrapping
+            label: Scrapping Dialog
+            fields:  
+              - name: jcrName
+                label: Name 
+                required: true            
+                class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+              - name: url
+                label: URL 
+                required: true            
+                class: info.magnolia.ui.form.field.definition.TextFieldDefinition               
+              - name: commandListJSoup
+                class: info.magnolia.ui.form.field.definition.MultiValueFieldDefinition
+                label: JSoup Command List
+                field:
+                  class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+                  label: JSoup Command
+              - name: information
+                class: info.magnolia.ui.form.field.definition.StaticFieldDefinition
+                label: Important!
+                value: You should use --variable-- 
+              - name: emailBody
+                label: E-Mail Body 
+                required: true            
+                class: info.magnolia.ui.form.field.definition.RichTextFieldDefinition
+              - name: emailList
+                class: info.magnolia.ui.form.field.definition.MultiValueFieldDefinition
+                label: E-Mail List
+                field:
+                  class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+                  label: E-Mail
+      nodeType:
+        icon: icon-items
+        name: mgnl:scrapping
+    contentConnector:
+      workspace: scrapping

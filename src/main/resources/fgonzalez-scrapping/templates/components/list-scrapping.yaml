@@ -1,0 +1,8 @@
+renderType: freemarker
+templateScript: /fgonzalez-scrapping/templates/components/list-scrapping.ftl
+dialog: fgonzalez-scrapping:components/html-scrapping
+modelClass: es.fgonzalez.model.ScrappingModel
+deletable: true
+moveable: true
+personalizable: true
+label: List Scrapping

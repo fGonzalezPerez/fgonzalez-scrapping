@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sv:node sv:name="scrappingCache" xmlns:sv="http://www.jcp.org/jcr/sv/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <sv:property sv:name="jcr:primaryType" sv:type="Name">
+    <sv:value>mgnl:contentNode</sv:value>
+  </sv:property>
+  <sv:property sv:name="jcr:uuid" sv:type="String">
+    <sv:value>67ce5879-2dd4-4162-868a-f26c2c9f4aa4</sv:value>
+  </sv:property>
+  <sv:property sv:name="diskExpiryThreadIntervalSeconds" sv:type="String">
+    <sv:value>120</sv:value>
+  </sv:property>
+  <sv:property sv:name="diskSpoolBufferSizeMB" sv:type="String">
+    <sv:value>30</sv:value>
+  </sv:property>
+  <sv:property sv:name="eternal" sv:type="String">
+    <sv:value>true</sv:value>
+  </sv:property>
+  <sv:property sv:name="jcr:createdBy" sv:type="String">
+    <sv:value>admin</sv:value>
+  </sv:property>
+  <sv:property sv:name="maxElementsInMemory" sv:type="String">
+    <sv:value>10000</sv:value>
+  </sv:property>
+  <sv:property sv:name="maxElementsOnDisk" sv:type="String">
+    <sv:value>10000000</sv:value>
+  </sv:property>
+  <sv:property sv:name="memoryStoreEvictionPolicy" sv:type="String">
+    <sv:value>LRU</sv:value>
+  </sv:property>
+  <sv:property sv:name="mgnl:activationStatus" sv:type="Boolean">
+    <sv:value>false</sv:value>
+  </sv:property>
+  <sv:property sv:name="mgnl:created" sv:type="Date">
+    <sv:value>2017-05-24T20:42:59.419+02:00</sv:value>
+  </sv:property>
+  <sv:property sv:name="mgnl:createdBy" sv:type="String">
+    <sv:value>superuser</sv:value>
+  </sv:property>
+  <sv:property sv:name="mgnl:lastActivated" sv:type="Date">
+    <sv:value>2017-05-24T20:42:59.421+02:00</sv:value>
+  </sv:property>
+  <sv:property sv:name="mgnl:lastActivatedBy" sv:type="String">
+    <sv:value>superuser</sv:value>
+  </sv:property>
+  <sv:property sv:name="mgnl:lastModified" sv:type="Date">
+    <sv:value>2017-05-24T20:43:47.955+02:00</sv:value>
+  </sv:property>
+  <sv:property sv:name="mgnl:lastModifiedBy" sv:type="String">
+    <sv:value>superuser</sv:value>
+  </sv:property>
+  <sv:property sv:name="timeToIdleSeconds" sv:type="String">
+    <sv:value>0</sv:value>
+  </sv:property>
+  <sv:property sv:name="timeToLiveSeconds" sv:type="String">
+    <sv:value>0</sv:value>
+  </sv:property>
+  <sv:node sv:name="persistence">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>mgnl:contentNode</sv:value>
+    </sv:property>
+    <sv:property sv:name="jcr:uuid" sv:type="String">
+      <sv:value>2e7f6c57-adea-47a6-b20d-1c4be7923012</sv:value>
+    </sv:property>
+    <sv:property sv:name="jcr:createdBy" sv:type="String">
+      <sv:value>admin</sv:value>
+    </sv:property>
+    <sv:property sv:name="mgnl:activationStatus" sv:type="Boolean">
+      <sv:value>false</sv:value>
+    </sv:property>
+    <sv:property sv:name="mgnl:created" sv:type="Date">
+      <sv:value>2017-05-24T20:42:59.419+02:00</sv:value>
+    </sv:property>
+    <sv:property sv:name="mgnl:createdBy" sv:type="String">
+      <sv:value>superuser</sv:value>
+    </sv:property>
+    <sv:property sv:name="mgnl:lastActivated" sv:type="Date">
+      <sv:value>2017-05-24T20:42:59.422+02:00</sv:value>
+    </sv:property>
+    <sv:property sv:name="mgnl:lastActivatedBy" sv:type="String">
+      <sv:value>superuser</sv:value>
+    </sv:property>
+    <sv:property sv:name="mgnl:lastModified" sv:type="Date">
+      <sv:value>2017-05-24T20:43:47.955+02:00</sv:value>
+    </sv:property>
+    <sv:property sv:name="mgnl:lastModifiedBy" sv:type="String">
+      <sv:value>superuser</sv:value>
+    </sv:property>
+    <sv:property sv:name="strategy" sv:type="String">
+      <sv:value>localTempSwap</sv:value>
+    </sv:property>
+    <sv:property sv:name="synchronousWrites" sv:type="String">
+      <sv:value>false</sv:value>
+    </sv:property>
+  </sv:node>
+</sv:node>
