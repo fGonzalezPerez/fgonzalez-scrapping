@@ -89,16 +89,4 @@ public class JsoupManager {
 
 	}
 
-	// public static void main(String[] args) {
-	//
-	// List<String> lista = new ArrayList<String>();
-	// JsoupManager j = new JsoupManager();
-	// lista = j.getScrapping("http://www.lanuevacronica.com/",
-	// "#cont_banner img", "src", "false");
-	//
-	// for (String s : lista) {
-	// System.out.println("++:" + s);
-	// }
-	// }
-
 }

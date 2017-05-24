@@ -395,7 +395,7 @@ subApps:
               - name: information
                 class: info.magnolia.ui.form.field.definition.StaticFieldDefinition
                 label: Important!
-                value: You should use --variable-- 
+                value: You should use --variable--, to replace values
               - name: emailBody
                 label: E-Mail Body 
                 required: true            

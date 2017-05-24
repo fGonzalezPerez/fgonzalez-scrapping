@@ -73,17 +73,12 @@ public class ScrappingCommand extends MgnlCommand {
 		
 		String body = PropertyUtil.getString(node, EMAIL_BODY, "");
 		String url = PropertyUtil.getString(node, URL, "");
-		//String cssQueries = PropertyUtil.getPropertyValueObject(node, CSS_QUERIES);
-		//String[] cssQueriesList = cssQueries.replaceAll("[", "").replaceAll("]", "").split(",");
 		List<String> cssQueriesList =  (List<String>) PropertyUtil.getPropertyValueObject(node, CSS_QUERIES);
-//		String email = PropertyUtil.getString(node, EMAIL_LIST, "");
-//		String[] emailList = email.replaceAll("[", "").replaceAll("]", "").split(",");
 		List<String> emailList =  (List<String>) PropertyUtil.getPropertyValueObject(node, EMAIL_LIST);//
-//		LOGGER.debug("body:\n{}\n url:-{}- cssQueries:-{}- email:-{}-", body, url, cssQueries, email);
 		
 		for(String cssQuery: cssQueriesList) {
-			//ENGANCHE
 			String resultScrapping = this.jsm.getScrapping(url, cssQuery, "text", "false").get(0);
+			LOGGER.debug("cssQuery:{},resultScrapping:{}",cssQuery, resultScrapping  );
 			body = body.replaceFirst(REGEX_REPLACE, resultScrapping);
 		}
 		LOGGER.debug("FINAL BODY after replace personalized values:\n {}",body);
